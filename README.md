@@ -1,4 +1,4 @@
-# checkpoint_converter
+# Checkpoint converter
 Fiji [1] macro that converts any image stack to a Stratovan Checkpoint [2] file (*.ckpt) with optional down-scaling of the data.
 
 
