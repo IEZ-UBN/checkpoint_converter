@@ -1,7 +1,11 @@
 /*  
- * Creates a \*.ckpt file for the Checkpoint landmarking software (Stratovan Corporation, Davis, CA) from an image stack of tiffs.
+ * Converts an image stack into a \*.ckpt file and its associated tiff-stack for the Stratovan Checkpoint (TM) landmarking software.
+ * 
+ * Tested for Version 2020.10.13.0859 on Win x64 and some earlier versions.
+ * 
  * Additional features:
  *   - downscaling to user-defined stack size
+ * 	 - reads pixel size from tiffs (user can change the value if wrong)
  *   - optional contrast enhancement
  *   
  *   Should run on Linux, Win & iOS.
