@@ -106,19 +106,20 @@ if(perc_d < 100){
 	run("Scale...", "x="+d+" y="+d+" z="+d+" interpolation=Bicubic average process create");
 	px_size = px_size/d;
 	print("New px size = "+px_size+" um.");
-	tiff_name = source_dir+parent_dir_name+"_red"+perc_d;
-	file_name = parent_dir_name+"_red"+perc_d+".tif\" ";
-	ckpt_name = parent_dir_name+"_red"+perc_d+".ckpt";
+	//tiff_name = source_dir+parent_dir_name+"_red"+perc_d;
+	tiff_name = specimen_name+"_"+ROI_name+"_red"+perc_d;
+	file_name = tiff_name+".tif";
+	ckpt_name = specimen_name+"_"+ROI_name+"_red"+perc_d+".ckpt";
 }
 else{
 	print("No scaling necessary; stack is already smaller than "+d_size+" GB.");
-	tiff_name = source_dir+parent_dir_name;
-	file_name = parent_dir_name+".tif\" ";
-	ckpt_name = parent_dir_name+".ckpt";
+	tiff_name = specimen_name+"_"+ROI_name;
+	file_name = tiff_name+".tif";
+	ckpt_name = specimen_name+"_"+ROI_name+".ckpt";
 }
 
-saveAs("Tiff", tiff_name);
-print("Saved stack as "+source_dir+dir_sep+file_name+".tif.");
+saveAs("Tiff", source_dir+tiff_name);
+print("Saved stack as "+file_name+".");
 
 checkpoint_file = File.open(source_dir+dir_sep+ckpt_name);
 print(checkpoint_file, "Version 5");
