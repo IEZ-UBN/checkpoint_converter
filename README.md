@@ -1,4 +1,4 @@
-# Checkpoint converterfor Fiji/Fiji
+# Checkpoint converterfor Imagej/Fiji
 Imagej [1] / Fiji [2] macro that converts an image stack into a \*.ckpt file and its associated tiff-stack for the Stratovan Checkpoint (TM) landmarking software [3].
 
 Tested for Checkpooint Version 2020.10.13.0859 on Win x64 and some earlier versions.
