@@ -1,7 +1,7 @@
 # Checkpoint converter
 Fiji [1] macro that converts an image stack into a \*.ckpt file and its associated tiff-stack for the Stratovan Checkpoint (TM) landmarking software [2].
 
-Tested for Version 2020.10.13.0859 on Win x64 and some earlier versions.
+Tested for Checkpooint Version 2020.10.13.0859 on Win x64 and some earlier versions.
 
  Additional features:
  * downscaling to user-defined stack size
@@ -14,7 +14,7 @@ Tested for Version 2020.10.13.0859 on Win x64 and some earlier versions.
 
 Please cite the following publication when you use this macro:
 
-Rühr et al. (in rev.): Juvenile ecology drives adult morphology in two insect orders.
+Rühr et al. (in press.): Juvenile ecology drives adult morphology in two insect orders. Proc. B.
 
 References:
 
