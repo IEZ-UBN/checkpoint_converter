@@ -1,20 +1,25 @@
 /*  
  * Converts an image stack into a \*.ckpt file and its associated tiff-stack for the Stratovan Checkpoint (TM) landmarking software.
  * 
- * Tested for Version 2020.10.13.0859 on Win x64 and some earlier versions.
+ * Tested for Checkpoint (TM) Version 2020.10.13.0859 and some earlier versions on Win x64.
  * 
  * Additional features:
- *   - downscaling to user-defined stack size
  * 	 - reads pixel size from tiffs (user can change the value if wrong)
- *   - optional contrast enhancement
+ *   - optional contrast enhancement & reduction to 8-bit
  *   
  *   Should run on Linux, Win & iOS.
  *   
- *   v. 1.0.0
+ *   v. 1.1.0
  *   
  *   Please cite the following paper when you use this macro:
- *   Rühr et al. (in rev.): Juvenile ecology drives adult morphology in two insect orders.
+ *   Rühr et al. (2021.): Juvenile ecology drives adult morphology in two insect orders.
+ *   Proc B 288: 20210616. https://doi.org/10.1098/rspb.2021.0616
  *  
+ *
+ *  If you experience any issues, please contact me at ruehr@uni-bonn.de
+ *
+ *  Happy landmarking!
+ *  Peter T. Rühr
  * BSD 3-Clause License
  * Copyright (c) 2021, Peter-T-Ruehr
  * All rights reserved.
@@ -69,18 +74,26 @@ Dialog.addMessage("___________________________________");
 	Dialog.addString("Name of ROI:", "ROI");
 	Dialog.addMessage("___________________________________");
 	Dialog.addNumber("Correct pixel size?:", px_size, 9, 10, "um")
-	//Dialog.addString("Unit: ", "um");
 	Dialog.addMessage("___________________________________");
 	Dialog.addNumber("Scale to [MB]: ", 280);
 	Dialog.addMessage("___________________________________");
-	Dialog.addCheckbox("Enhance contrast?", true);
+	Dialog.addCheckbox("Convert to 8-bit*? ", false);
 	Dialog.addMessage("___________________________________");
+	Dialog.addCheckbox("Enhance contrast*?", false);
+	Dialog.addMessage("___________________________________");
+	Dialog.addMessage("*calibrated Hounsfield units will be lost!");
+	Dialog.addMessage("___________________________________");
+	Dialog.addMessage("Rühr et al. (2021): Proc B 288: 20210616.");
+	Dialog.addMessage("doi: 10.1098/rspb.2021.0616");
+	Dialog.addMessage("In case of any issues: please contact ruehr@uni-bonn.de");
+	Dialog.addMessage("___________________________________");
+
 	Dialog.show();
 	specimen_name = Dialog.getString();
 	ROI_name = Dialog.getString();
 	px_size = Dialog.getNumber();
-	//unit = Dialog.getString();
-	d_size = Dialog.getNumber()/1024;  //MB/1024=GB
+	d_size = Dialog.getNumber()/1024;
+	conv_8bit = Dialog.getCheckbox();
 	enhance_contrast = Dialog.getCheckbox();
 	print("Working on "+specimen_name+"...");
 	
@@ -97,7 +110,7 @@ print(d);
 run("Properties...", "unit=um pixel_width="+px_size+" pixel_height="+px_size+" voxel_depth="+px_size);
 print("Pixel size set to "+px_size+".");
 
-if(bitDepth() != 8){
+if(bitDepth() != 8 && conv_8bit == true){
 	run("8-bit");
 }
 
