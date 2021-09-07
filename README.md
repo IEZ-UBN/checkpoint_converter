@@ -1,4 +1,7 @@
 # Checkpoint converterfor Imagej/Fiji
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5482947.svg)](https://doi.org/10.5281/zenodo.5482947)
+
 Imagej / Fiji [1,2] macro that converts an image stack into a \*.ckpt file and its associated tif-stack for the Stratovan Checkpoint(TM) landmarking software [3].
 
 Tested for Stratovan Checkpooint(TM) Version 2020.10.13.0859 on Win x64 and some earlier versions.
